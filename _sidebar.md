@@ -1,2 +1,3 @@
 - 模块
     - [发票模块（aukey-supply-chain-invoice）](modules/aukey-supply-chain-invoice/main)
+    - [可靠消息服务（aukey-ecmq-server）](modules/aukey-ecmq-server/main)
