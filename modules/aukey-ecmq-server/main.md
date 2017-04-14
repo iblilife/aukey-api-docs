@@ -17,12 +17,14 @@
 - 设置Erlang环境变量 `set ERLANG_HOME=C:\Program Files\erl8.0`
 - 安装 [RabbitMQ](http://www.rabbitmq.com/download.html)
 
-**RabbitMQ相关设置**
--   使用RabbitMQ管理插件 `rabbitmq-plugins.bat  enable  rabbitmq_management`
+**RabbitMQ相关设置（windows）**
+-   启用管理插件 `rabbitmq-plugins.bat  enable  rabbitmq_management` 访问管理URL: `http://localhost:15672`
 -   添加用户 `rabbitmqctl.bat add_user iblilife iblilife123`
 -   设置管理员 `rabbitmqctl.bat set_user_tags iblilife administrator`
 -   设置权限 `rabbitmqctl.bat set_permissions -p / iblilife ".*" ".*" ".*"`
 -   查看用户列表 `rabbitmqctl.bat list_users`
+-   启动RabbitMQ Server `rabbitmqctl.bat start`
+-   停止RabbitMQ Server `rabbitmqctl.bat stop`
 
 ```text
 C:\setups\RabbitMQ Server\rabbitmq_server-3.6.9\sbin>rabbitmq-plugins.bat  enable  rabbitmq_management
