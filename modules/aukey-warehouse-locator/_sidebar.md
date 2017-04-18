@@ -5,4 +5,5 @@
     - [删除库位](modules/aukey-warehouse-locator/remove_warehouse_locator)
     - [修改库位](modules/aukey-warehouse-locator/update_warehouse_locator)
     - [库位下SKU列表](modules/aukey-warehouse-locator/warehouse_locator_sku_list)
+    - [仓库下拉框数据](modules/aukey-warehouse-locator/warehouse_list)
 
