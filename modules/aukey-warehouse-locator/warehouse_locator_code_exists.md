@@ -22,8 +22,15 @@ GET     /warehouse/locator/exists
 ```json
     {
         "success": true,
-        "message": null
+        "message": null,
+        "data": {
+          "exists": true,
+          "locatorId": 123
+        }
     }
 ```
 
-`success`值为`true`表示存在`false`表示不存在。
+> `success` 字段为业务操作是否成功，`true`表示成功，`false` 表示失败。 <br />
+> `message` 字段表示失败原因。 <br />
+> `data` -> `exists` 值为`true`表示该仓库下库位存在, `false`表示该仓库下库位不存在。 <br />
+> `data` -> `locatorId` 值为库位ID
