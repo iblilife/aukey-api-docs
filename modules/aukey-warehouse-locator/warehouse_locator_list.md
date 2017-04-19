@@ -17,7 +17,7 @@ GET     /warehouse/locator/list
 | pageSize    | 是<br/> Number | 50        | 分页每页数据大小       |
 | pageIndex   | 是<br/> Number | 1         | 分页当前页页码，从1开始 |
 | locatorCode | 否<br/> String | 00-200-99 | 库位编码条件           |
-| warehouseId | 否<br/> String | 111       | 仓库ID条件            |
+| warehouseId | 否<br/> Number | 111       | 仓库ID条件            |
 
 **响应结果JSON**
 

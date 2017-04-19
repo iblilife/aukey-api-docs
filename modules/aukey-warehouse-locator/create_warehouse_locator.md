@@ -16,7 +16,7 @@ POST     /warehouse/locator/create
 |:--------------|:--------------:|:--------------|:-----------------------------------------------------|
 | locatorCode   | 是<br/> String | 00-200-99     | 库位编码                                              |
 | locatorTypeId | 是<br/> String | `DYNAMICALLY` | 库位类型，可选值`DYNAMICALLY`(动态)或`STATICALLY`(静态)  |
-| warehouseId   |  是<br/> int   | 111           | 仓库ID                                                |
+| warehouseId   | 是<br/> Number | 111           | 仓库ID                                                |
 
 
 **响应成功结果JSON**

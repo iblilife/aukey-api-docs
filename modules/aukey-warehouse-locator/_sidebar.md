@@ -6,4 +6,5 @@
     - [修改库位](modules/aukey-warehouse-locator/update_warehouse_locator)
     - [库位下SKU列表](modules/aukey-warehouse-locator/warehouse_locator_sku_list)
     - [仓库下拉框数据](modules/aukey-warehouse-locator/warehouse_list)
-
+- **后端-接口**
+    - [检查库位编码是否存在](modules/aukey-warehouse-locator/warehouse_locator_code_exists)

@@ -53,7 +53,7 @@ GET     /warehouse/data/warehouseGroupByTypeList
 
 **参数列表**
 
-无
+_无_
 
 **响应结果JSON**
 

@@ -1,5 +1,5 @@
 - 模块
-    - [发票模块（aukey-supply-chain-invoice）](modules/aukey-supply-chain-invoice/main)
-    - [可靠消息服务（aukey-ecmq-server）](modules/aukey-ecmq-server/main)
-    - [库位管理（aukey-warehouse-locator）](modules/aukey-warehouse-locator/main)
-    - [供应商结算方式模块（aukey-supplier-settlement-method）](modules/aukey-supplier-settlement-method/main)
+    - [发票模块（aukey-supply-chain-invoice）](modules/aukey-supply-chain-invoice/main "发票模块（aukey-supply-chain-invoice）")
+    - [可靠消息服务（aukey-ecmq-server）](modules/aukey-ecmq-server/main "可靠消息服务（aukey-ecmq-server）")
+    - [库位管理（aukey-warehouse-locator）](modules/aukey-warehouse-locator/main "库位管理（aukey-warehouse-locator）")
+    - [供应商结算方式模块（aukey-supplier-settlement-method）](modules/aukey-supplier-settlement-method/main "供应商结算方式模块（aukey-supplier-settlement-method）")
