@@ -9,3 +9,4 @@
 - **后端-接口**
     - [检查库位编码是否存在](modules/aukey-warehouse-locator/warehouse_locator_code_exists)
     - [根据库位ID获取详细信息](modules/aukey-warehouse-locator/get_warehouse_locator_des_by_ids)
+    - [根据仓库ID获取仓库下库位](modules/aukey-warehouse-locator/get_warehouse_locators_by_warehouse_id)
