@@ -7,6 +7,11 @@
 https://svn.aukeyit.com/svn/Code/aukey-warehouse-locator/trunk
 ```
 
+**测试环境地址**
+```text
+http://warehouse-locator.qa.aukeyit.com
+```
+
 **测试环境数据库**
 ```text
 //数据库
