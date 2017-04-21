@@ -7,7 +7,7 @@
 **接口url**
 
 ```text
-GET     /warehouse/locator/getDesWithWarehouseId
+GET     /warehouse/locator/getAllWithWarehouseId
 ```
 
 **参数列表**
