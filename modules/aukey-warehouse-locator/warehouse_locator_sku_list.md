@@ -20,9 +20,8 @@ GET     /warehouse/locator/sku/list
 
 ```json
     {
-        "success": true,
-        "message": null,
-        "data": [
+        "total": 2,
+        "rows": [
             {
                 "sku": "1212121",
                 "quantity": 12,
@@ -37,9 +36,8 @@ GET     /warehouse/locator/sku/list
     }
 ```
 
-> `success` 字段为业务操作是否成功，`true`表示成功，`false` 表示失败。 <br />
-> `message` 字段表示失败原因。 <br />
-> `data` 为sku数据项数组
+`total` 总记录行数。 <br />
+`data` 为sku数据项数组。
 
 `data` 为sku数据项字段说明：
 

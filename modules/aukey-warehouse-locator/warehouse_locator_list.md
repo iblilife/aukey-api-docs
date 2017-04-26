@@ -15,7 +15,7 @@ GET     /warehouse/locator/list
 | 参数名称     |      必要       | 样例       | 说明                  |
 |:------------|:--------------:|:----------|:---------------------|
 | pageSize    | 是<br/> Number | 50        | 分页每页数据大小       |
-| pageIndex   | 是<br/> Number | 1         | 分页当前页页码，从1开始 |
+| pageNumber  | 是<br/> Number | 1         | 分页当前页页码，从1开始 |
 | locatorCode | 否<br/> String | 00-200-99 | 库位编码条件           |
 | warehouseId | 否<br/> Number | 111       | 仓库ID条件            |
 
