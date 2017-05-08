@@ -1,0 +1,3 @@
+- [基础数据初始化](modules/data-init/main)
+- [采购数据](modules/data-init/purchase)
+- [Amazon listing数据](modules/data-init/amazon_listing)
