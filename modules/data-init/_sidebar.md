@@ -1,3 +1,7 @@
 - [基础数据初始化](modules/data-init/main)
 - [采购数据](modules/data-init/purchase)
 - [Amazon listing数据](modules/data-init/amazon_listing)
+- [E登入库同步佰易接口](modules/data-init/inventory_ed_zfh_in_sync)
+- [E登出库同步佰易接口](modules/data-init/inventory_ed_zfh_out_sync)
+- [佰易海外仓调拨入库记录接口](modules/data-init/inventory_ed_overseas_in_sync)
+- [数据签名计算](modules/data-init/sign_build)
