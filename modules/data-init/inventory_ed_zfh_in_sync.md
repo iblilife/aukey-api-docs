@@ -55,23 +55,24 @@ com.aukey.by.ed.api.web.WarehouseApiController.syncEDWithZFHStockInput(request)
 ```
 
 
-__数据存放位置__
+__数据库相关__
 
 涉及数据库：`supply_sign`<br/>
 
-涉及表：<br/>
-`storage`   采购入库记录表 <br/>
-`rejects`  不良品记录表   <br/>
-`stock_record` 其他入库记录表 <br/>
+涉及表：
+- `storage`   采购入库记录表
+- `rejects`  不良品记录表
+- `stock_record` 其他入库记录表
+- `stock` 库存表
 
-__采购入库类型__
+不同入库类型分别处理：
+- 采购入库类型 <br />
+    根据质检单号查询质检表`qc_quality_control`获取`良品`和`不良品`数量，`良品`入库记录存放在`storage`表，`不良品`记录存放在`rejects`表。 <br />
+- 其他入库类型 <br />
+    数据存放在`stock_record`表。
 
-根据质检单号查询质检表`qc_quality_control`获取`良品`和`不良品`数量，`良品`入库记录存放在`storage`表，`不良品`记录存放在`rejects`表。 <br />
-
-__其他入库类型__
-
-数据存放在`stock_record`表。
-
+库存累加：<br />
+- 根据仓库ID，SKU获取库存记录，存在记录累加`stock`表`quantity_available`字段数据，不存在新建记录。
 
 #### warehouse_inout_sync_ed_history
 新增数据表`warehouse_inout_sync_ed_history` E登同步出入库到佰易系统记录，用于实现出入库接口做`幂等性`判断依据。
@@ -92,5 +93,3 @@ CREATE TABLE `warehouse_inout_sync_ed_history` (
 | SKU_SEQ | int         | 根据sku出入库流水号         |
 | SKU     | varchar(50) | SKU                       |
 | TYPE    | char(10)    | 类型：`IN` 入库，`OUT` 出库 |
-
-TODO: 未完待续...
