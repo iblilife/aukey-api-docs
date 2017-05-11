@@ -13,7 +13,7 @@
 __签名计算代码示例-JAVA__
 ```java
     //填写约定的secret
-    String secret = "5Vc%ySCftaxn0=1!r1hIK$GeRq2kzbuO";
+    String secret = "xxxxxxxxxxxxxxx";
     
     //收集所有参数
     Map<String, String> args = new HashMap<>();
