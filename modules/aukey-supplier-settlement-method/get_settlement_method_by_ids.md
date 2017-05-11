@@ -29,6 +29,7 @@ GET     /settlement/getDesWithIds
         "accountperiod": "75",
         "paymentDurationDays": 15,
         "createUser": 111,
+        "paymentMethodType": "COD",
         "createTime": "2017-04-19 12:29:52"
     },{
         "paymentMethodId": 1,
@@ -37,6 +38,7 @@ GET     /settlement/getDesWithIds
         "accountperiod": "75",
         "paymentDurationDays": 15,
         "createUser": 111,
+        "paymentMethodType": "MONTH",
         "createTime": "2017-04-19 12:29:52"
      }
     //... ...
@@ -46,13 +48,14 @@ GET     /settlement/getDesWithIds
 
 **响应结果JSON`data`项字段说明**
 
-| 字段名称             | 说明                                 |
-|:--------------------|:------------------------------------|
-| paymentMethodId     | 供应商结算方式ID，唯一                 |
-| method              | 结算方式简短描述（名称）               |
-| prepay              | 预付                                 |
-| accountperiod       | 账期                                 |
-| paymentDurationDays | 付款期间                             |
-| createUser          | 创建人用户ID                         |
-| createTime          | 创建时间，格式：`yyyy-MM-dd HH:mm:ss` |
+| 字段名称             | 说明                                                 |
+|:--------------------|:----------------------------------------------------|
+| paymentMethodId     | 供应商结算方式ID，唯一                                 |
+| method              | 结算方式简短描述（名称）                               |
+| prepay              | 预付                                                 |
+| accountperiod       | 账期                                                 |
+| paymentDurationDays | 付款期间                                             |
+| createUser          | 创建人用户ID                                         |
+| paymentMethodType   | 结算类型，可选值 月结 `MONTH`、货到 `COD`、其他 `OTHER` |
+| createTime          | 创建时间，格式：`yyyy-MM-dd HH:mm:ss`                 |
 

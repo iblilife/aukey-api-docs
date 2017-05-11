@@ -44,8 +44,14 @@ __响应结果JSON__
 
 __项目svn地址__
 ```text
-/aukey-by-ed-api/trunk
+https://10.1.1.132/svn/Code/aukey-by-ed-api/trunk
 ```
+
+__接口代码位置__
+```text
+com.aukey.by.ed.api.web.WarehouseApiController.syncEDWithZFHStockInput(request)
+```
+
 
 __数据存放位置__
 
@@ -65,6 +71,24 @@ __其他入库类型__
 数据存放在`stock_record`表。
 
 
+#### warehouse_inout_sync_ed_history
+新增数据表`warehouse_inout_sync_ed_history` E登同步出入库到佰易系统记录，用于实现出入库接口做`幂等性`判断依据。
+E登推送出入库记录成功会在该表记录一条信息，已经存在与该表的`流水号`与`SKU`记录，E登再次同步会忽略不做处理。
 
+__warehouse_inout_sync_ed_history 表结构__
+```sql
+CREATE TABLE `warehouse_inout_sync_ed_history` (
+    `SKU_SEQ`  int NOT NULL ,
+    `SKU`  varchar(50) NOT NULL ,
+    `TYPE`  char(10) NULL ,
+    PRIMARY KEY (`SKU_SEQ`, `SKU`)
+);
+```
+
+| 字段     | 类型         | 说明                       |
+|:--------|:------------|:--------------------------|
+| SKU_SEQ | int         | 根据sku出入库流水号         |
+| SKU     | varchar(50) | SKU                       |
+| TYPE    | char(10)    | 类型：`IN` 入库，`OUT` 出库 |
 
 TODO: 未完待续...
