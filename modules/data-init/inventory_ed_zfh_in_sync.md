@@ -74,6 +74,50 @@ __数据库相关__
 库存累加：<br />
 - 根据仓库ID，SKU获取库存记录，存在记录累加`stock`表`quantity_available`字段数据，不存在新建记录。
 
+##### 数据有效性
+
+根据质检单号查询质检表`qc_quality_control`获取`良品数量`、`不良品数量`、`采购单ID`。 <br />
+
+`{采购需求数量}`：根据`采购单ID`与`SKU`查询`supply_chain.purchase_demand`采购需求表（多条记录）合计`quantity`字段值。 <br />
+
+`{采购需求单号}`: 根据`采购单ID`与`SKU`查询`supply_chain.purchase_demand`采购需求表（多条记录）的所有`purchase_demand_id`字段值。 <br />
+
+`{已处理数量}`：根据`{采购需求单号}`查询`supply_sign.storage_requirement`（多条记录）合计`supply_quantity`字段值。 <br />
+
+__如果`{已处理数量}`+`良品数量`+`不良品数量` > `{采购需求数量}`则该条入库数据有误，不予处理并抛出异常__
+
+---
+
+##### 处理逻辑
+根据`采购单ID`与`SKU`查询`supply_chain.purchase_demand`采购需求表（多条记录）。<br />
+```sql
+    SELECT * FROM purchase_demand WHERE sku_code = :skuCode 
+    AND purchase_order_id = :purchaseOrderId ORDER BY update_date ASC --不良品为：DESC
+```
+根据良品数量/不良品数量分摊到每条采购需求记录，分摊数量不能超过采购需求记录的`quantity`字段的值减去所对应的`supply_sign.storage_requirement`表`supply_quantity`已分摊数量（根据采购需求单号匹配）。
+1.  良品数量处理 <br />
+    优先匹配`update_date`（处理时间）最早（小）的采购订单需求。<br />
+    分摊数量记录插入到数据表`supply_sign.storage_requirement`中`type`为`1`表示良品。
+
+2.  不良品数量处理(大致处理逻辑与良品一致) <br />
+    优先匹配`update_date`（处理时间）最晚（大）的采购订单需求。<br />
+    分摊数量记录插入到数据表`supply_sign.storage_requirement`中`type`为`2`表示不良品。
+
+---
+
+
+##### 状态变更
+
+1.  需求单状态
+    `supply_chain.requirement`-`requirement_status`->`4`
+2.  采购单状态
+    `supply_chain.purchase_order`-`order_status`->`3`:部分入库、`4`:全部入库
+3.  质检单状态
+    `supply_sign.qc_status`->`4`
+
+---
+
+
 #### warehouse_inout_sync_ed_history
 新增数据表`warehouse_inout_sync_ed_history` E登同步出入库到佰易系统记录，用于实现出入库接口做`幂等性`判断依据。
 E登推送出入库记录成功会在该表记录一条信息，已经存在与该表的`流水号`与`SKU`记录，E登再次同步会忽略不做处理。
@@ -93,3 +137,5 @@ CREATE TABLE `warehouse_inout_sync_ed_history` (
 | SKU_SEQ | int         | 根据sku出入库流水号         |
 | SKU     | varchar(50) | SKU                       |
 | TYPE    | char(10)    | 类型：`IN` 入库，`OUT` 出库 |
+
+
