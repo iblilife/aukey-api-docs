@@ -74,9 +74,10 @@ __数据库相关__
 - 采购入库类型 <br />
     根据质检单号查询质检表`qc_quality_control`获取`良品`和`不良品`数量，`良品`入库记录存放在`storage`表，`不良品`记录存放在`rejects`表。 <br />
 - 调拨入库类型 <br />
-
+    根据调拨单号与sku修改`supply_delivery.transfer_detail`表处理状态`post_status`为`1`。<br/>
+    插入数据`stock_record`表, `type`为`3`表示调拨入库。
 - 其他入库类型 <br />
-    数据存放在`stock_record`表。
+    插入数据`stock_record`表, `type`为`1`表示其他入库。
 
 ##### 库存累加
 根据仓库ID，SKU获取库存记录，存在记录累加`stock`表`quantity_available`字段数据，不存在新建记录。

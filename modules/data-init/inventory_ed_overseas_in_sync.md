@@ -58,7 +58,9 @@ __`data`数据项字段说明__
 `message` 字段表示失败原因。
 
 
+<br/><br/><br/>
 
+---
 
 #### 开发需求分析
 > 开发/维护人员文档，接口调用无需关注
@@ -89,6 +91,6 @@ SELECT
 ts.transfer_no AS transferNo, td.sku AS sku, 
 SUM(td.box_count) AS quantity, ts.warehouse_id AS warehouseId
 FROM transfer_detail td LEFT JOIN transfer_slip ts ON(td.transfer_id = ts.transfer_id)
-WHERE ts.data_status = '1' AND ts.transfer_status = '2'
+WHERE ts.data_status = '1' AND ts.transfer_status = '2' AND td.post_status= '0'
 GROUP BY ts.transfer_no, td.sku
 ```
