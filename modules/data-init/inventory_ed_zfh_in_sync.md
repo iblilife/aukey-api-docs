@@ -109,11 +109,11 @@ __如果`{已处理数量}`+`良品数量`+`不良品数量` > `{采购需求数
 ##### 状态变更
 
 1.  需求单状态
-    `supply_chain.requirement`-`requirement_status`->`4`
+    `supply_chain.requirement`-`requirement_status`->`5`:发货计划
 2.  采购单状态
     `supply_chain.purchase_order`-`order_status`->`3`:部分入库、`4`:全部入库
 3.  质检单状态
-    `supply_sign.qc_status`->`4`
+    `supply_sign.qc_quality_control.qc_status`->`4`
 
 ---
 
