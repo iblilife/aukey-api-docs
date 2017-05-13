@@ -11,19 +11,20 @@ POST     http://data-sync-api.qa.aukeyit.com/warehouse/sync/ed_zfh_in
 ```
 
 __参数列表__
+> 带`*`为必填字段, `删除线`为废弃字段
 
-| 参数            | 名称        | 样例     | 详细说明                                                                                 |
-|:---------------|:-----------|:---------|:----------------------------------------------------------------------------------------|
-| ~~sign~~       | 数据签名    |          | 数据签名，用于验证数据有效性 [查看sign计算](/modules/data-init/sign_build)                  |
-| ~~timestamp~~  | 时间戳      |          | 调用接口当前时间戳(毫秒)                                                                   |
-| no             | 流水号      | 1        | 流水号，`流水号`与`SKU`唯一                                                               |
-| type           | 类型        | `IN_P`   | 入库类型，可选值：`IN_P` 采购入库、`IN_O` 其他入库                                          |
-| t_number       | 单号        | 12312321 | 单号，根据类型不同给到不到单号, `IN_O` 其他入库单号不传值。例如：类型采购入库，单号则为`质检单号`  |
-| in_number      | 入库单号    |          | 入库单号                                                                                 |
-| sku            | SKU        | TEST_SKU | 产品SKU编码                                                                              |
-| quantity       | 数量        | 10       | 入库数量                                                                                 |
-| warehouse_id   | 仓库ID      |          | 入库仓库ID                                                                               |
-| operator_email | 入库员Email |          | 入库员Email，必填字段，用于在佰易系统对应相关操作人员ID                                       |
+| 参数             | 名称        | 样例     | 详细说明                                                                                                            |
+|:----------------|:-----------|:---------|:-------------------------------------------------------------------------------------------------------------------|
+| ~~sign~~        | 数据签名    |          | 数据签名，用于验证数据有效性 [查看sign计算](/modules/data-init/sign_build)                                             |
+| ~~timestamp~~   | 时间戳      |          | 调用接口当前时间戳(毫秒)                                                                                              |
+| no*             | 流水号      | 1        | 流水号，`流水号`与`SKU`唯一                                                                                          |
+| type*           | 类型        | `IN_P`   | 入库类型，可选值：`IN_P` 采购入库、`IN_A` 调拨入库、`IN_O` 其他入库                                                      |
+| t_number*       | 单号        |          | 单号，根据类型不同给到不到单号, `IN_O` 其他入库单号不传值。<br/>采购入库，单号则为`质检单号` <br/>调拨入库，单号则为`调拨单号`  |
+| in_number*      | 入库单号    |          | 入库单号                                                                                                            |
+| sku*            | SKU        | TEST_SKU | 产品SKU编码                                                                                                         |
+| quantity*       | 数量        | 10       | 入库数量                                                                                                            |
+| warehouse_id*   | 仓库ID      |          | 入库仓库ID                                                                                                          |
+| operator_email* | 入库员Email |          | 入库员Email，必填字段，用于在佰易系统对应相关操作人员ID                                                                  |
 
 
 __响应结果JSON__
@@ -57,22 +58,28 @@ com.aukey.by.ed.api.web.WarehouseApiController.syncEDWithZFHStockInput(request)
 
 __数据库相关__
 
-涉及数据库：`supply_sign`<br/>
+涉及数据库：
+- `supply_sign`
+- `supply_delivery`
+- `supply_chain`
 
 涉及表：
 - `storage`   采购入库记录表
 - `rejects`  不良品记录表
 - `stock_record` 其他入库记录表
 - `stock` 库存表
+- `supply_delivery.transfer_slip` 调拨主表，`supply_delivery.transfer_detail` 调拨详细表
 
-不同入库类型分别处理：
+##### 不同入库类型分别处理
 - 采购入库类型 <br />
     根据质检单号查询质检表`qc_quality_control`获取`良品`和`不良品`数量，`良品`入库记录存放在`storage`表，`不良品`记录存放在`rejects`表。 <br />
+- 调拨入库类型 <br />
+
 - 其他入库类型 <br />
     数据存放在`stock_record`表。
 
-库存累加：<br />
-- 根据仓库ID，SKU获取库存记录，存在记录累加`stock`表`quantity_available`字段数据，不存在新建记录。
+##### 库存累加
+根据仓库ID，SKU获取库存记录，存在记录累加`stock`表`quantity_available`字段数据，不存在新建记录。
 
 ##### 数据有效性
 
