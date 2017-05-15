@@ -12,11 +12,11 @@ POST     http://data-sync-api.qa.aukeyit.com/warehouse/sync/ed_zfh_out
 
 __参数列表__
 
-| 参数       | 名称     | 样例  | 详细说明                   |
-|:----------|:--------|:-----|:--------------------------|
+| 参数           | 名称     | 样例  | 详细说明                                                                |
+|:--------------|:--------|:-----|:-----------------------------------------------------------------------|
 | ~~sign~~      | 数据签名 |      | 数据签名，用于验证数据有效性 [查看sign计算](/modules/data-init/sign_build) |
-| ~~timestamp~~ | 时间戳   |      | 调用接口当前时间戳(毫秒)    |
-| data      | 出库记录 |      | 出库记录JSON字符串         |
+| ~~timestamp~~ | 时间戳   |      | 调用接口当前时间戳(毫秒)                                                 |
+| data          | 出库记录 |      | 出库记录JSON字符串                                                      |
 
 __参数出库记录`data`样例__
 
@@ -28,14 +28,14 @@ __参数出库记录`data`样例__
         "t_number": "",
         "sku": "TEST_SKU",
         "quantity": 10,
-        "warehouse_id": "10000"
+        "warehouse_id": 10
       },{
         "no": 12122,
         "type": "OUT_O",
         "t_number": "",
         "sku": "TEST_SKU1",
         "quantity": 11,
-        "warehouse_id": "10001"
+        "warehouse_id": 10
       }
       //......
 ]
@@ -43,14 +43,14 @@ __参数出库记录`data`样例__
 
 __参数出库记录`data`JSON字符串字段详细__
 
-| 参数          | 名称    | 样例      | 详细说明                                                      |
-|:-------------|:-------|:----------|:-------------------------------------------------------------|
-| no             |  流水号      |           |  `流水号`与`SKU`唯一。                                                           |
-| type         | 类型    | `OUT_S`   | 出库类型，可选值：`OUT_S` 订单出库、`OUT_O` 其他出库             |
-| t_number     | 单号    | 12312321  | 单号，根据类型不同给到不到单号，`OUT_O` 其他出库单号不传值。例如：类型订单出库，单号则为销售单号 |
-| sku          | SKU    | TEST_SKU  | 产品SKU编码                                                   |
-| quantity     | 数量    | 10        | 出库数量                                                      |
-| warehouse_id | 仓库ID  |           | 出库仓库ID                                                    |
+| 参数          | 名称    | 数据类型   | 详细说明                                                                                |
+|:-------------|:-------|:----------|:---------------------------------------------------------------------------------------|
+| no           | 流水号  | `String`  | `流水号`与`SKU`唯一。                                                                   |
+| type         | 类型    | `String`  | 出库类型，可选值：`OUT_S` 订单出库、`OUT_O` 其他出库                                       |
+| t_number     | 单号    | `String`  | 单号，根据类型不同给到不同单号。<br />`OUT_O`其他出库，单号不传值<br />`OUT_S`订单出库，单号则为销售单号  |
+| sku          | SKU    | `Number`  | 产品SKU编码                                                                             |
+| quantity     | 数量    | `Number`  | 出库数量                                                                                |
+| warehouse_id | 仓库ID  | `Number`  | 出库仓库ID                                                                              |
 
 __响应结果JSON__
 
@@ -71,4 +71,18 @@ __响应结果JSON__
 #### 开发文档
 > 开发/维护人员文档，接口调用无需关注
 
-TODO: 未完待续...
+__项目svn地址__
+```text
+https://10.1.1.132/svn/Code/aukey-by-ed-api/trunk
+```
+
+__接口代码位置__
+```text
+com.aukey.by.ed.api.web.WarehouseApiController.syncEDWithZFHStockOutput(request)
+```
+
+__处理流程__
+
+- 判断出库记录是否已处理 `supply_sign.warehouse_inout_sync_ed_history`
+- 新增出库记录 `supply_sign.stock_record`
+- 扣减库存 `supply_sign.stock`
