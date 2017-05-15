@@ -133,6 +133,7 @@ E登推送出入库记录成功会在该表记录一条信息，已经存在与�
 __warehouse_inout_sync_ed_history 表结构__
 ```sql
 CREATE TABLE `warehouse_inout_sync_ed_history` (
+    `HISTORY_ID` varchar(100) NOT NULL ,
     `SKU_SEQ`  int NOT NULL ,
     `SKU`  varchar(50) NOT NULL ,
     `TYPE`  char(10) NULL ,
@@ -140,10 +141,11 @@ CREATE TABLE `warehouse_inout_sync_ed_history` (
 );
 ```
 
-| 字段     | 类型         | 说明                       |
-|:--------|:------------|:--------------------------|
-| SKU_SEQ | int         | 根据sku出入库流水号         |
-| SKU     | varchar(50) | SKU                       |
-| TYPE    | char(10)    | 类型：`IN` 入库，`OUT` 出库 |
+| 字段        | 类型          | 说明                                      |
+|:-----------|:-------------|:-----------------------------------------|
+| HISTORY_ID | varchar(100) | 主键由字段 `SKU_SEQ` + `#` + `SKU`拼接而成 |
+| SKU_SEQ    | int          | 根据sku出入库流水号                        |
+| SKU        | varchar(50)  | SKU                                      |
+| TYPE       | char(10)     | 类型：`IN` 入库，`OUT` 出库                |
 
 
