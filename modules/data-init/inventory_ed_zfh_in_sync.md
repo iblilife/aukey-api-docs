@@ -7,6 +7,8 @@ __`调用方` E登，`接收方`：佰易__
 __url__
 
 ```text
+Content-Type: application/x-www-form-urlencoded
+
 POST     http://data-sync-api.qa.aukeyit.com/warehouse/sync/ed_zfh_in
 ```
 
