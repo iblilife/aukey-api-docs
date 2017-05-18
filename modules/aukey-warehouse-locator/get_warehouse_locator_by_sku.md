@@ -5,7 +5,7 @@
 ###  接口详细
 #### URL
 ```text
-GET     /warehouse/locator/getDesWithSKU
+GET     /warehouse/locator/getAssocWithSKU
 ```
 
 #### Parameters
