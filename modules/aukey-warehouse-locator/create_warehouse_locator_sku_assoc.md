@@ -8,7 +8,7 @@
 
 #### URL
 ```text
-GET     /warehouse/locator/createSKUAssoc
+POST     /warehouse/locator/createSKUAssoc
 ```
 
 #### Parameters

@@ -35,20 +35,16 @@ warehouse_locator
 | LAST_EDITOR_USER_ID |     int     | 最后修改人用户ID                                                      |
 | LAST_UPDATED_STAMP  |  datetime   | 最后修改时间                                                          |
 
+**warehouse_locator_sku_assoc** 仓库库位与SKU关联关系表
 
-**sql**
-
-```sql
-  CREATE TABLE `warehouse_locator` (
-      `LOCATOR_ID`  int NOT NULL AUTO_INCREMENT ,
-      `LOCATOR_CODE`  varchar(50) NULL ,
-      `LOCATOR_TYPE_ID`  varchar(50) NULL ,
-      `WAREHOUSE_ID`  int NULL ,
-      `REMOVED`  char(1) NULL ,
-      `CREATOR_USER_ID`  int NULL ,
-      `CREATED_STAMP`  datetime NULL ,
-      `LAST_EDITOR_USER_ID`  int NULL ,
-      `LAST_UPDATED_STAMP`  datetime NULL ON UPDATE CURRENT_TIMESTAMP ,
-      PRIMARY KEY (`LOCATOR_ID`)
-  );
-```
+| 字段名称                |     类型     | 说明                                       |
+|:-----------------------|:-----------:|:------------------------------------------|
+| ASSOC_ID               |     int     | 标识                                       |
+| LOCATOR_ID             |     int     | 库位ID                                     |
+| SKU_CODE               | varchar(50) | SKU Code                                  |
+| FROM_DATE_STAMP        |  datetime   | 起始时间                                   |
+| THRU_DATE_STAMP        |  datetime   | 截止时间                                   |
+| STATUS_ID              | varchar(50) | 状态，可选值`CREATED`已创建、`REMOVED`已删除 |
+| CREATOR_USER_ID        |     int     | 创建人USER ID                              |
+| CREATE_DATE_STAMP      |  datetime   | 创建时间                                   |
+| LAST_UPDATE_DATA_STAMP |  datetime   | 最后修改时间                                |
