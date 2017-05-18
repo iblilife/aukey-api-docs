@@ -4,20 +4,17 @@
 
 **项目svn地址**
 ```text
-https://svn.aukeyit.com/svn/Code/aukey-warehouse-locator/trunk
+https://svn.aukeyit.com/svn/Code/aukey-product/trunk
 ```
 
 **测试环境地址**
 ```text
-http://warehouse-locator.qa.aukeyit.com
+http://product.qa.aukeyit.com/warehouse/index
 ```
 
-**测试环境数据库**
-```text
-//数据库
-warehouse_locator
+**数据库**
+`product_ms`
 
-```
 
 ### 表设计
 
