@@ -53,7 +53,7 @@ __参数出库记录`data`JSON字符串字段详细__
 | sku          | SKU     | `Number`  | 产品SKU编码                                                                                      |
 | quantity     | 数量     | `Number`  | 出库数量                                                                                         |
 | warehouse_id | 仓库ID   | `Number`  | 出库仓库ID                                                                                       |
-| cost         | sku成本  | `Number`  | 单个SKU成本金额                                                                                  |
+| sku_cost     | sku成本  | `Number`  | 单个SKU成本金额                                                                                  |
 
 __响应结果JSON__
 
