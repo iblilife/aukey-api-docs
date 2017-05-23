@@ -25,6 +25,7 @@ __参数列表__
 | quantity*       | 数量        | 10       | 入库数量                                                                                                            |
 | warehouse_id*   | 仓库ID      |          | 入库仓库ID                                                                                                          |
 | operator_email* | 入库员Email |          | 入库员Email，必填字段，用于在佰易系统对应相关操作人员ID                                                                  |
+| sku_cost*       | sku成本     | 8.88     | 单个SKU成本金额                                                                                                     |
 
 
 __响应结果JSON__
