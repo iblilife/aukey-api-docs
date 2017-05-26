@@ -25,7 +25,6 @@ __参数列表__
 | quantity*       | 数量        | 10       | 入库数量                                                                                                            |
 | warehouse_id*   | 仓库ID      |          | 入库仓库ID                                                                                                          |
 | operator_email* | 入库员Email |          | 入库员Email，必填字段，用于在佰易系统对应相关操作人员ID                                                                  |
-| sku_cost*       | sku成本     | 8.88     | 单个SKU成本金额                                                                                                     |
 
 
 __响应结果JSON__
@@ -81,7 +80,10 @@ __数据库相关__
     插入数据`stock_record`表, `type`为`1`表示其他入库。
 
 ##### 库存累加
-根据仓库ID，SKU获取库存记录，存在记录累加`stock`表`quantity_available`字段数据，不存在新建记录。
+1.  根据仓库ID，SKU获取库存记录，存在记录累加`stock`表`quantity_available`字段数据，不存在新建记录。
+
+2.  采购入库类型特殊处理, 数据来源逻辑[处理逻辑-良品数量处理](/modules/data-init/inventory_ed_zfh_in_sync?id=处理逻辑),
+存在记录累加`supply_sign.stock_request_inquiry`表`quantity_available`字段数据. 不存在新建记录. 这里只记录良品数量.
 
 ##### 数据有效性
 
@@ -103,7 +105,8 @@ __如果`{已处理数量}`+`良品数量`+`不良品数量` > `{采购需求数
     SELECT * FROM purchase_demand WHERE sku_code = :skuCode 
     AND purchase_order_id = :purchaseOrderId ORDER BY update_date ASC --不良品为：DESC
 ```
-根据良品数量/不良品数量分摊到每条采购需求记录，分摊数量不能超过采购需求记录的`quantity`字段的值减去所对应的`supply_sign.storage_requirement`表`supply_quantity`已分摊数量（根据采购需求单号匹配）。
+根据良品数量/不良品数量分摊到每条采购需求记录，
+分摊数量不能超过采购需求记录的`quantity`字段的值减去所对应的`supply_sign.storage_requirement`表`supply_quantity`已分摊数量（根据采购需求单号匹配）。
 1.  良品数量处理 <br />
     优先匹配`update_date`（处理时间）最早（小）的采购订单需求。<br />
     分摊数量记录插入到数据表`supply_sign.storage_requirement`中`type`为`1`表示良品。
