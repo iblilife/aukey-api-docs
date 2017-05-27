@@ -24,7 +24,7 @@ __参数出库记录`data`样例__
 [
       {
         "no": 12121,
-        "type": "OUT_S",
+        "type": "OTHER_OUT",
         "t_number": "",
         "sku": "TEST_SKU",
         "quantity": 10,
@@ -32,7 +32,7 @@ __参数出库记录`data`样例__
         "operator_email": "xxx@aukeys.com"
       },{
         "no": 12122,
-        "type": "OUT_O",
+        "type": "OTHER_OUT",
         "t_number": "",
         "sku": "TEST_SKU1",
         "quantity": 11,
@@ -45,15 +45,15 @@ __参数出库记录`data`样例__
 
 __参数出库记录`data`JSON字符串字段详细__
 
-| 参数            | 名称        | 数据类型  | 详细说明                                                                                         |
-|:---------------|:-----------|:---------|:------------------------------------------------------------------------------------------------|
-| no             | 流水号      | `String` | `流水号`与`SKU`唯一。                                                                             |
-| type           | 类型        | `String` | 出库类型，可选值：`OUT_S` 订单出库、`OUT_O` 其他出库                                                |
-| t_number       | 单号        | `String` | 单号，根据类型不同给到不同单号。<br />`OUT_O`其他出库，单号不传值<br />`OUT_S`订单出库，单号则为销售单号  |
-| sku            | SKU        | `Number` | 产品SKU编码                                                                                      |
-| quantity       | 数量        | `Number` | 出库数量                                                                                         |
-| warehouse_id   | 仓库ID      | `Number` | 出库仓库ID                                                                                       |
-| operator_email | 入库员Email | `Number` | 入库员Email，必填字段，用于在佰易系统对应相关操作人员ID                                               |
+| 参数            | 名称        | 数据类型  | 详细说明                                                                                                                                                                                               |
+|:---------------|:-----------|:---------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| no             | 流水号      | `String` | `流水号`与`SKU`唯一。                                                                                                                                                                                   |
+| type           | 类型        | `String` | 出库类型，参考[E登与佰易 出入库类型对照表](/modules/data-init/inventory_ed_zfh_in_sync?id=e%e7%99%bb%e4%b8%8e%e4%bd%b0%e6%98%93-%e5%87%ba%e5%85%a5%e5%ba%93%e7%b1%bb%e5%9e%8b%e5%af%b9%e7%85%a7%e8%a1%a8)  |
+| t_number       | 单号        | `String` | 单号，根据类型不同给到不同单号。<br />`SALE_ORDER_OUT`订单出库，单号则为销售单号                                                                                                                             |
+| sku            | SKU        | `Number` | 产品SKU编码                                                                                                                                                                                            |
+| quantity       | 数量        | `Number` | 出库数量                                                                                                                                                                                               |
+| warehouse_id   | 仓库ID      | `Number` | 出库仓库ID                                                                                                                                                                                             |
+| operator_email | 入库员Email | `Number` | 入库员Email，必填字段，用于在佰易系统对应相关操作人员ID                                                                                                                                                     |
 
 __响应结果JSON__
 
