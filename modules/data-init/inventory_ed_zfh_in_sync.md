@@ -54,6 +54,7 @@ __响应结果JSON__
 | 调整入库        | 冲销入库                                             | `ADJUST_IN`           |
 | 调拨(调仓)入库   | 调拨入库                                             | `ALLOT_IN`            |
 | 红字冲销        | 冲销入库                                             | `WRITE_OFF_IN`        |
+| 不良品入库       | 不良品入库                                           | `FAIL_SKU_IN`         |
 |                |                                                     |                       |
 | _以下为出库类型_ |                                                     |                       |
 | 调整出库        | 冲销出库                                             | `ADJUST_OUT`          |
@@ -65,6 +66,7 @@ __响应结果JSON__
 | 报损出库        | 报损出库                                             | `SCRAP_OUT`           |
 | 内销出库        | 内部销售出库                                         | `WITHIN_SALE_OUT`     |
 | 订单出库        | 销售订单出库                                         | `SALE_ORDER_OUT`      |
+| 不良品出库       | 不良品出库                                           | `FAIL_SKU_OUT`        |
 
 <br /><br /><br />
 
