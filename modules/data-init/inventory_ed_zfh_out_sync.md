@@ -27,6 +27,7 @@ __参数出库记录`data`样例__
         "type": "OTHER_OUT",
         "t_number": "",
         "sku": "TEST_SKU",
+        "out_number": "123123",
         "quantity": 10,
         "warehouse_id": 10,
         "operator_email": "xxx@aukeys.com"
@@ -35,6 +36,7 @@ __参数出库记录`data`样例__
         "type": "OTHER_OUT",
         "t_number": "",
         "sku": "TEST_SKU1",
+        "out_number": "123124",
         "quantity": 11,
         "warehouse_id": 10,
         "operator_email": "xxx@aukeys.com"
@@ -50,6 +52,7 @@ __参数出库记录`data`JSON字符串字段详细__
 | no             | 流水号      | `String` | `流水号`与`SKU`唯一。                                                                                                                                                                                   |
 | type           | 类型        | `String` | 出库类型，参考[E登与佰易 出入库类型对照表](/modules/data-init/inventory_ed_zfh_in_sync?id=e%e7%99%bb%e4%b8%8e%e4%bd%b0%e6%98%93-%e5%87%ba%e5%85%a5%e5%ba%93%e7%b1%bb%e5%9e%8b%e5%af%b9%e7%85%a7%e8%a1%a8)  |
 | t_number       | 单号        | `String` | 单号，根据类型不同给到不同单号。<br />`SALE_ORDER_OUT`订单出库，单号则为销售单号                                                                                                                             |
+| out_number     | 出库单号    | `String` | E登出库单号(用于记录, 如果出现数据异常用于回查)                                                                                                                                                            |
 | sku            | SKU        | `Number` | 产品SKU编码                                                                                                                                                                                            |
 | quantity       | 数量        | `Number` | 出库数量                                                                                                                                                                                               |
 | warehouse_id   | 仓库ID      | `Number` | 出库仓库ID                                                                                                                                                                                             |
