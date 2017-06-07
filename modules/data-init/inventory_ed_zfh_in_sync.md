@@ -152,7 +152,14 @@ __如果`{已处理数量}`+`良品数量`+`不良品数量` > `{采购需求数
 ##### 状态变更
 
 1.  需求单状态
-    `supply_chain.requirement`-`requirement_status`->`5`:发货计划
+    特殊仓库处理, 仓库ID为 `36`, `64`, `7`, `28`, `77`.<br/>
+    `supply_sign.storage_requirement`表字段`supply_quantity`入库数量等于`supply_chain.requirement`表的`quantity`则修改状态为 需求完结, 否则不变化.
+    `supply_chain.requirement`-`requirement_status`->`6`:需求完结
+    <br/>
+
+    其它仓库<br/>
+    `supply_chain.requirement`-`requirement_status`->`5`:发货计划 <br/>
+
 2.  采购单状态
     `supply_chain.purchase_order`-`order_status`->`3`:部分入库、`4`:全部入库
 3.  质检单状态
