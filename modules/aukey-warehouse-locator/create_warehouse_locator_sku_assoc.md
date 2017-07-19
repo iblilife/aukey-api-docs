@@ -18,6 +18,7 @@ POST     /warehouse/locator/createSKUAssoc
 |:-----------|:------:|:------------|
 | skuCode*   | string | SKU编码      |
 | locatorId* | number | 库位ID       |
+| stockId*   | number | 仓库ID       |
 
 #### Response JSON
 
