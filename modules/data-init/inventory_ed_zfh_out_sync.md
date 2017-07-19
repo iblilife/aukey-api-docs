@@ -59,7 +59,7 @@ __参数出库记录`data`JSON字符串字段详细__
 | quantity       | 数量        | `Number` | 出库数量                                                                                                                                                                                               |
 | warehouse_id   | 仓库ID      | `Number` | 出库仓库ID                                                                                                                                                                                             |
 | operator_email | 入库员Email | `Number` | 入库员Email，必填字段，用于在佰易系统对应相关操作人员ID                                                                                                                                                     |
-| create_time    | 出入库时间  | `String` | 出库时间, 字符串, 格式: yyyy\:MM:dd HH\:mm:ss                                                                                                                                                             |
+| create_time    | 出入库时间  | `String` | 出库时间, 字符串, 格式: `yyyy:MM:dd HH:mm:ss`                                                                                                                                                             |
 
 __响应结果JSON__
 
